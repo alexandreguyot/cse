@@ -41,21 +41,30 @@
                     </a>
                 </li>
 
+                @can('category_access')
+                    <li class="items-center">
+                        <a class="{{ request()->is("admin/categories*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.categories.index") }}">
+                            <i class="fa-fw c-sidebar-nav-icon fas fa-cogs">
+                            </i>
+                            {{ trans('cruds.category.title') }}
+                        </a>
+                    </li>
+                @endcan
+                @can('subject_access')
+                    <li class="items-center">
+                        <a class="{{ request()->is("admin/subjects*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.subjects.index") }}">
+                            <i class="fa-fw c-sidebar-nav-icon fas fa-cogs">
+                            </i>
+                            {{ trans('cruds.subject.title') }}
+                        </a>
+                    </li>
+                @endcan
                 @can('task_access')
                     <li class="items-center">
                         <a class="{{ request()->is("admin/tasks*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.tasks.index") }}">
                             <i class="fa-fw c-sidebar-nav-icon fas fa-tasks">
                             </i>
                             {{ trans('cruds.task.title') }}
-                        </a>
-                    </li>
-                @endcan
-                @can('project_access')
-                    <li class="items-center">
-                        <a class="{{ request()->is("admin/projects*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.projects.index") }}">
-                            <i class="fa-fw c-sidebar-nav-icon fab fa-product-hunt">
-                            </i>
-                            {{ trans('cruds.project.title') }}
                         </a>
                     </li>
                 @endcan

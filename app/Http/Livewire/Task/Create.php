@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Task;
 
-use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
 use Livewire\Component;
@@ -17,7 +16,8 @@ class Create extends Component
 
     public function mount(Task $task)
     {
-        $this->task = $task;
+        $this->task           = $task;
+        $this->task->priority = 'low';
         $this->initListsForFields();
     }
 
@@ -47,14 +47,13 @@ class Create extends Component
                 'string',
                 'required',
             ],
-            'task.project_id' => [
-                'integer',
-                'exists:projects,id',
-                'required',
-            ],
             'task.status' => [
                 'required',
                 'in:' . implode(',', array_keys($this->listsForFields['status'])),
+            ],
+            'task.priority' => [
+                'nullable',
+                'in:' . implode(',', array_keys($this->listsForFields['priority'])),
             ],
             'user' => [
                 'required',
@@ -69,8 +68,8 @@ class Create extends Component
 
     protected function initListsForFields(): void
     {
-        $this->listsForFields['project'] = Project::pluck('title', 'id')->toArray();
-        $this->listsForFields['status']  = $this->task::STATUS_SELECT;
-        $this->listsForFields['user']    = User::pluck('name', 'id')->toArray();
+        $this->listsForFields['status']   = $this->task::STATUS_SELECT;
+        $this->listsForFields['priority'] = $this->task::PRIORITY_SELECT;
+        $this->listsForFields['user']     = User::pluck('name', 'id')->toArray();
     }
 }

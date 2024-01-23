@@ -100,23 +100,43 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 23,
-                'title' => 'project_create',
+                'title' => 'category_create',
             ],
             [
                 'id'    => 24,
-                'title' => 'project_edit',
+                'title' => 'category_edit',
             ],
             [
                 'id'    => 25,
-                'title' => 'project_show',
+                'title' => 'category_show',
             ],
             [
                 'id'    => 26,
-                'title' => 'project_delete',
+                'title' => 'category_delete',
             ],
             [
                 'id'    => 27,
-                'title' => 'project_access',
+                'title' => 'category_access',
+            ],
+            [
+                'id'    => 28,
+                'title' => 'subject_create',
+            ],
+            [
+                'id'    => 29,
+                'title' => 'subject_edit',
+            ],
+            [
+                'id'    => 30,
+                'title' => 'subject_show',
+            ],
+            [
+                'id'    => 31,
+                'title' => 'subject_delete',
+            ],
+            [
+                'id'    => 32,
+                'title' => 'subject_access',
             ],
         ];
 

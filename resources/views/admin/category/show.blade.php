@@ -6,9 +6,9 @@
             <div class="card-header-container">
                 <h6 class="card-title">
                     {{ trans('global.view') }}
-                    {{ trans('cruds.task.title_singular') }}:
-                    {{ trans('cruds.task.fields.id') }}
-                    {{ $task->id }}
+                    {{ trans('cruds.category.title_singular') }}:
+                    {{ trans('cruds.category.fields.id') }}
+                    {{ $category->id }}
                 </h6>
             </div>
         </div>
@@ -19,30 +19,22 @@
                     <tbody class="bg-white">
                         <tr>
                             <th>
-                                {{ trans('cruds.task.fields.id') }}
+                                {{ trans('cruds.category.fields.id') }}
                             </th>
                             <td>
-                                {{ $task->id }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                {{ trans('cruds.task.fields.title') }}
-                            </th>
-                            <td>
-                                {{ $task->title }}
+                                {{ $category->id }}
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div class="form-group">
-                @can('task_edit')
-                    <a href="{{ route('admin.tasks.edit', $task) }}" class="btn btn-indigo mr-2">
+                @can('category_edit')
+                    <a href="{{ route('admin.categories.edit', $category) }}" class="btn btn-indigo mr-2">
                         {{ trans('global.edit') }}
                     </a>
                 @endcan
-                <a href="{{ route('admin.tasks.index') }}" class="btn btn-secondary">
+                <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary">
                     {{ trans('global.back') }}
                 </a>
             </div>
