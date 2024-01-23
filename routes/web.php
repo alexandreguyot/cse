@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PermissionController;
-use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TaskController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\UserProfileController;
@@ -29,8 +30,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     // Task
     Route::resource('tasks', TaskController::class, ['except' => ['store', 'update', 'destroy']]);
 
-    // Project
-    Route::resource('projects', ProjectController::class, ['except' => ['store', 'update', 'destroy']]);
+    // Category
+    Route::resource('categories', CategoryController::class, ['except' => ['store', 'update', 'destroy']]);
+
+    // Subject
+    Route::resource('subjects', SubjectController::class, ['except' => ['store', 'update', 'destroy']]);
 });
 
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth']], function () {

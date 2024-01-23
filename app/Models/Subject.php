@@ -9,11 +9,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Task extends Model
+class Subject extends Model
 {
     use HasFactory, HasAdvancedFilter, SoftDeletes;
 
-    public $table = 'tasks';
+    public $table = 'subjects';
+
+    protected $fillable = [
+        'title',
+        'description',
+        'category_id',
+    ];
 
     protected $dates = [
         'created_at',
@@ -21,40 +27,19 @@ class Task extends Model
         'deleted_at',
     ];
 
-    protected $fillable = [
-        'title',
-        'description',
-        'status',
-        'priority',
-    ];
-
     public $orderable = [
         'id',
         'title',
         'description',
-        'status',
-        'priority',
-    ];
-
-    public const PRIORITY_SELECT = [
-        'low'    => 'Low',
-        'medium' => 'Medium',
-        'high'   => 'High',
+        'category.title',
     ];
 
     public $filterable = [
         'id',
         'title',
         'description',
-        'status',
-        'priority',
-        'user.name',
-    ];
-
-    public const STATUS_SELECT = [
-        'todo'        => 'To Do',
-        'in_progress' => 'In progress',
-        'done'        => 'Done',
+        'category.title',
+        'task.title',
     ];
 
     protected function serializeDate(DateTimeInterface $date)
@@ -62,19 +47,14 @@ class Task extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
-    public function getStatusLabelAttribute($value)
+    public function category()
     {
-        return static::STATUS_SELECT[$this->status] ?? null;
+        return $this->belongsTo(Category::class);
     }
 
-    public function getPriorityLabelAttribute($value)
+    public function task()
     {
-        return static::PRIORITY_SELECT[$this->priority] ?? null;
-    }
-
-    public function user()
-    {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(Task::class);
     }
 
     public function getCreatedAtAttribute($value)

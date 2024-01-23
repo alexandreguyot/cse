@@ -35,7 +35,7 @@ class TaskController extends Controller
     {
         abort_if(Gate::denies('task_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $task->load('project', 'user');
+        $task->load('user');
 
         return view('admin.task.show', compact('task'));
     }

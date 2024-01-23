@@ -8,16 +8,16 @@
                 @endforeach
             </select>
 
-            @can('task_delete')
+            @can('category_delete')
                 <button class="btn btn-rose ml-3 disabled:opacity-50 disabled:cursor-not-allowed" type="button" wire:click="confirm('deleteSelected')" wire:loading.attr="disabled" {{ $this->selectedCount ? '' : 'disabled' }}>
                     {{ __('Delete Selected') }}
                 </button>
             @endcan
 
             @if(file_exists(app_path('Http/Livewire/ExcelExport.php')))
-                <livewire:excel-export model="Task" format="csv" />
-                <livewire:excel-export model="Task" format="xlsx" />
-                <livewire:excel-export model="Task" format="pdf" />
+                <livewire:excel-export model="Category" format="csv" />
+                <livewire:excel-export model="Category" format="xlsx" />
+                <livewire:excel-export model="Category" format="pdf" />
             @endif
 
 
@@ -41,72 +41,43 @@
                         <th class="w-9">
                         </th>
                         <th class="w-28">
-                            {{ trans('cruds.task.fields.id') }}
+                            {{ trans('cruds.category.fields.id') }}
                             @include('components.table.sort', ['field' => 'id'])
                         </th>
                         <th>
-                            {{ trans('cruds.task.fields.title') }}
+                            {{ trans('cruds.category.fields.title') }}
                             @include('components.table.sort', ['field' => 'title'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.task.fields.description') }}
-                            @include('components.table.sort', ['field' => 'description'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.task.fields.status') }}
-                            @include('components.table.sort', ['field' => 'status'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.task.fields.priority') }}
-                            @include('components.table.sort', ['field' => 'priority'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.task.fields.user') }}
                         </th>
                         <th>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($tasks as $task)
+                    @forelse($categories as $category)
                         <tr>
                             <td>
-                                <input type="checkbox" value="{{ $task->id }}" wire:model="selected">
+                                <input type="checkbox" value="{{ $category->id }}" wire:model="selected">
                             </td>
                             <td>
-                                {{ $task->id }}
+                                {{ $category->id }}
                             </td>
                             <td>
-                                {{ $task->title }}
-                            </td>
-                            <td>
-                                {{ $task->description }}
-                            </td>
-                            <td>
-                                {{ $task->status_label }}
-                            </td>
-                            <td>
-                                {{ $task->priority_label }}
-                            </td>
-                            <td>
-                                @foreach($task->user as $key => $entry)
-                                    <span class="badge badge-relationship">{{ $entry->name }}</span>
-                                @endforeach
+                                {{ $category->title }}
                             </td>
                             <td>
                                 <div class="flex justify-end">
-                                    @can('task_show')
-                                        <a class="btn btn-sm btn-info mr-2" href="{{ route('admin.tasks.show', $task) }}">
+                                    @can('category_show')
+                                        <a class="btn btn-sm btn-info mr-2" href="{{ route('admin.categories.show', $category) }}">
                                             {{ trans('global.view') }}
                                         </a>
                                     @endcan
-                                    @can('task_edit')
-                                        <a class="btn btn-sm btn-success mr-2" href="{{ route('admin.tasks.edit', $task) }}">
+                                    @can('category_edit')
+                                        <a class="btn btn-sm btn-success mr-2" href="{{ route('admin.categories.edit', $category) }}">
                                             {{ trans('global.edit') }}
                                         </a>
                                     @endcan
-                                    @can('task_delete')
-                                        <button class="btn btn-sm btn-rose mr-2" type="button" wire:click="confirm('delete', {{ $task->id }})" wire:loading.attr="disabled">
+                                    @can('category_delete')
+                                        <button class="btn btn-sm btn-rose mr-2" type="button" wire:click="confirm('delete', {{ $category->id }})" wire:loading.attr="disabled">
                                             {{ trans('global.delete') }}
                                         </button>
                                     @endcan
@@ -133,7 +104,7 @@
                     {{ __('Entries selected') }}
                 </p>
             @endif
-            {{ $tasks->links() }}
+            {{ $categories->links() }}
         </div>
     </div>
 </div>
