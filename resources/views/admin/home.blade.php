@@ -1,16 +1,20 @@
 @extends('layouts.admin')
 @section('content')
+
 <div class="row">
-    <div class="card bg-white">
-        <div class="card-header border-b border-blueGray-200">
-            <div class="card-header-container">
+    <div class="card bg-blueGray-100 w-full">
+        <div class="card-header">
+            <div class="card-row">
                 <h6 class="card-title">
-                    Dashbaord
+                    Dashboard
                 </h6>
             </div>
         </div>
-        @livewire('dashboard.index')
 
+        <div class="card-body">
+            <p class="pt-3">You are logged in!</p>
+        </div>
     </div>
 </div>
+
 @endsection

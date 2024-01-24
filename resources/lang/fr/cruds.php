@@ -105,6 +105,8 @@ return [
             'updated_at_helper' => ' ',
             'deleted_at'        => 'Deleted at',
             'deleted_at_helper' => ' ',
+            'subject'           => 'Sujet(s)',
+            'subject_helper'    => ' ',
         ],
     ],
     'subject' => [
@@ -117,8 +119,6 @@ return [
             'title_helper'       => ' ',
             'description'        => 'Description',
             'description_helper' => ' ',
-            'category'           => 'Categorie',
-            'category_helper'    => ' ',
             'created_at'         => 'Created at',
             'created_at_helper'  => ' ',
             'updated_at'         => 'Updated at',

@@ -43,16 +43,6 @@
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.subject.fields.category') }}
-                            </th>
-                            <td>
-                                @if($subject->category)
-                                    <span class="badge badge-relationship">{{ $subject->category->title ?? '' }}</span>
-                                @endif
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
                                 {{ trans('cruds.subject.fields.task') }}
                             </th>
                             <td>
