@@ -27,6 +27,14 @@
                         </tr>
                         <tr>
                             <th>
+                                {{ trans('cruds.category.fields.description') }}
+                            </th>
+                            <td>
+                                {{ $category->description }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
                                 {{ trans('cruds.category.fields.subject') }}
                             </th>
                             <td>

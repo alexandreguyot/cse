@@ -15,33 +15,63 @@ class Subject extends Model
 
     public $table = 'subjects';
 
-    protected $fillable = [
-        'title',
-        'description',
-    ];
-
-    public $orderable = [
-        'id',
-        'title',
-        'description',
-    ];
-
     protected $dates = [
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
+    protected $fillable = [
+        'title',
+        'description',
+        'priority',
+        'status',
+    ];
+
+    public $orderable = [
+        'id',
+        'title',
+        'description',
+        'priority',
+        'status',
+    ];
+
+    public const PRIORITY_SELECT = [
+        'low'    => 'Low',
+        'medium' => 'Medium',
+        'high'   => 'High',
+    ];
+
     public $filterable = [
         'id',
         'title',
         'description',
+        'priority',
+        'status',
         'task.title',
+    ];
+
+    public const STATUS_SELECT = [
+        'not_started' => 'Not Started',
+        'todo'        => 'To Do',
+        'in_progress' => 'In Progress',
+        'done'        => 'Done',
+        'archived'    => 'Archived',
     ];
 
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function getPriorityLabelAttribute($value)
+    {
+        return static::PRIORITY_SELECT[$this->priority] ?? null;
+    }
+
+    public function getStatusLabelAttribute($value)
+    {
+        return static::STATUS_SELECT[$this->status] ?? null;
     }
 
     public function task()

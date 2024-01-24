@@ -95,6 +95,7 @@ return [
         'title'          => 'Categories',
         'title_singular' => 'Category',
         'fields'         => [
+<<<<<<< HEAD
             'id'                => 'ID',
             'id_helper'         => ' ',
             'title'             => 'Titre',
@@ -107,6 +108,22 @@ return [
             'deleted_at_helper' => ' ',
             'subject'           => 'Sujet(s)',
             'subject_helper'    => ' ',
+=======
+            'id'                 => 'ID',
+            'id_helper'          => ' ',
+            'title'              => 'Titre',
+            'title_helper'       => ' ',
+            'created_at'         => 'Created at',
+            'created_at_helper'  => ' ',
+            'updated_at'         => 'Updated at',
+            'updated_at_helper'  => ' ',
+            'deleted_at'         => 'Deleted at',
+            'deleted_at_helper'  => ' ',
+            'subject'            => 'Sujet(s)',
+            'subject_helper'     => ' ',
+            'description'        => 'Description',
+            'description_helper' => ' ',
+>>>>>>> 47caad7 (QuickAdminPanel automatic commit)
         ],
     ],
     'subject' => [
@@ -127,6 +144,10 @@ return [
             'deleted_at_helper'  => ' ',
             'task'               => 'Tâche',
             'task_helper'        => ' ',
+            'priority'           => 'Priorité',
+            'priority_helper'    => ' ',
+            'status'             => 'Status',
+            'status_helper'      => ' ',
         ],
     ],
 

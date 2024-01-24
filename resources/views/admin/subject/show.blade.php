@@ -43,6 +43,22 @@
                         </tr>
                         <tr>
                             <th>
+                                {{ trans('cruds.subject.fields.priority') }}
+                            </th>
+                            <td>
+                                {{ $subject->priority_label }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.subject.fields.status') }}
+                            </th>
+                            <td>
+                                {{ $subject->status_label }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
                                 {{ trans('cruds.subject.fields.task') }}
                             </th>
                             <td>

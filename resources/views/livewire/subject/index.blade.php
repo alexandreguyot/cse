@@ -19,10 +19,6 @@
                 <livewire:excel-export model="Subject" format="xlsx" />
                 <livewire:excel-export model="Subject" format="pdf" />
             @endif
-
-
-
-
         </div>
         <div class="w-full sm:w-1/2 sm:text-right">
             Search:
@@ -53,6 +49,14 @@
                             @include('components.table.sort', ['field' => 'description'])
                         </th>
                         <th>
+                            {{ trans('cruds.subject.fields.priority') }}
+                            @include('components.table.sort', ['field' => 'priority'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.subject.fields.status') }}
+                            @include('components.table.sort', ['field' => 'status'])
+                        </th>
+                        <th>
                             {{ trans('cruds.subject.fields.task') }}
                         </th>
                         <th>
@@ -75,6 +79,15 @@
                                 {{ $subject->description }}
                             </td>
                             <td>
+<<<<<<< HEAD
+=======
+                                {{ $subject->priority_label }}
+                            </td>
+                            <td>
+                                {{ $subject->status_label }}
+                            </td>
+                            <td>
+>>>>>>> 47caad7 (QuickAdminPanel automatic commit)
                                 @foreach($subject->task as $key => $entry)
                                     <span class="badge badge-relationship">{{ $entry->title }}</span>
                                 @endforeach

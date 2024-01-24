@@ -17,23 +17,25 @@ class Category extends Model
 
     protected $fillable = [
         'title',
+        'description',
     ];
 
     public $orderable = [
         'id',
         'title',
-    ];
-
-    public $filterable = [
-        'id',
-        'title',
-        'subject.title',
+        'description',
     ];
 
     protected $dates = [
         'created_at',
         'updated_at',
         'deleted_at',
+    ];
+
+    public $filterable = [
+        'id',
+        'title',
+        'subject.title',
     ];
 
     protected function serializeDate(DateTimeInterface $date)

@@ -43,6 +43,10 @@ class Edit extends Component
                 'string',
                 'required',
             ],
+            'category.description' => [
+                'string',
+                'nullable',
+            ],
             'subject' => [
                 'array',
             ],

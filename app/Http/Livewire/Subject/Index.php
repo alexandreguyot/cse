@@ -29,10 +29,10 @@ class Index extends Component
             'except' => '',
         ],
         'sortBy' => [
-            'except' => 'id',
+            'except' => 'priority',
         ],
         'sortDirection' => [
-            'except' => 'desc',
+            'except' => 'asc',
         ],
     ];
 
@@ -58,8 +58,8 @@ class Index extends Component
 
     public function mount()
     {
-        $this->sortBy            = 'id';
-        $this->sortDirection     = 'desc';
+        $this->sortBy            = 'priority';
+        $this->sortDirection     = 'asc';
         $this->perPage           = 100;
         $this->paginationOptions = config('project.pagination.options');
         $this->orderable         = (new Subject())->orderable;

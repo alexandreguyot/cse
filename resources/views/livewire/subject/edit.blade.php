@@ -20,6 +20,36 @@
             {{ trans('cruds.subject.fields.description_helper') }}
         </div>
     </div>
+    <div class="form-group {{ $errors->has('subject.priority') ? 'invalid' : '' }}">
+        <label class="form-label">{{ trans('cruds.subject.fields.priority') }}</label>
+        <select class="form-control" wire:model="subject.priority">
+            <option value="null" disabled>{{ trans('global.pleaseSelect') }}...</option>
+            @foreach($this->listsForFields['priority'] as $key => $value)
+                <option value="{{ $key }}">{{ $value }}</option>
+            @endforeach
+        </select>
+        <div class="validation-message">
+            {{ $errors->first('subject.priority') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.subject.fields.priority_helper') }}
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('subject.status') ? 'invalid' : '' }}">
+        <label class="form-label">{{ trans('cruds.subject.fields.status') }}</label>
+        <select class="form-control" wire:model="subject.status">
+            <option value="null" disabled>{{ trans('global.pleaseSelect') }}...</option>
+            @foreach($this->listsForFields['status'] as $key => $value)
+                <option value="{{ $key }}">{{ $value }}</option>
+            @endforeach
+        </select>
+        <div class="validation-message">
+            {{ $errors->first('subject.status') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.subject.fields.status_helper') }}
+        </div>
+    </div>
     <div class="form-group {{ $errors->has('task') ? 'invalid' : '' }}">
         <label class="form-label" for="task">{{ trans('cruds.subject.fields.task') }}</label>
         <x-select-list class="form-control" id="task" name="task" wire:model="task" :options="$this->listsForFields['task']" multiple />

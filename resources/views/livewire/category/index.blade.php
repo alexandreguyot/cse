@@ -49,6 +49,10 @@
                             @include('components.table.sort', ['field' => 'title'])
                         </th>
                         <th>
+                            {{ trans('cruds.category.fields.description') }}
+                            @include('components.table.sort', ['field' => 'description'])
+                        </th>
+                        <th>
                             {{ trans('cruds.category.fields.subject') }}
                         </th>
                         <th>
@@ -68,6 +72,12 @@
                                 {{ $category->title }}
                             </td>
                             <td>
+<<<<<<< HEAD
+=======
+                                {{ $category->description }}
+                            </td>
+                            <td>
+>>>>>>> 47caad7 (QuickAdminPanel automatic commit)
                                 @foreach($category->subject as $key => $entry)
                                     <span class="badge badge-relationship">{{ $entry->title }}</span>
                                 @endforeach

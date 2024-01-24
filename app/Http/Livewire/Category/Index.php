@@ -32,7 +32,7 @@ class Index extends Component
             'except' => 'id',
         ],
         'sortDirection' => [
-            'except' => 'desc',
+            'except' => 'asc',
         ],
     ];
 

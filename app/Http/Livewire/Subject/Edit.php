@@ -47,6 +47,14 @@ class Edit extends Component
                 'string',
                 'nullable',
             ],
+            'subject.priority' => [
+                'nullable',
+                'in:' . implode(',', array_keys($this->listsForFields['priority'])),
+            ],
+            'subject.status' => [
+                'nullable',
+                'in:' . implode(',', array_keys($this->listsForFields['status'])),
+            ],
             'task' => [
                 'array',
             ],
@@ -59,6 +67,12 @@ class Edit extends Component
 
     protected function initListsForFields(): void
     {
+<<<<<<< HEAD
         $this->listsForFields['task'] = Task::pluck('title', 'id')->toArray();
+=======
+        $this->listsForFields['priority'] = $this->subject::PRIORITY_SELECT;
+        $this->listsForFields['status']   = $this->subject::STATUS_SELECT;
+        $this->listsForFields['task']     = Task::pluck('title', 'id')->toArray();
+>>>>>>> 47caad7 (QuickAdminPanel automatic commit)
     }
 }
