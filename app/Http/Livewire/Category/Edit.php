@@ -3,15 +3,22 @@
 namespace App\Http\Livewire\Category;
 
 use App\Models\Category;
+use App\Models\Subject;
 use Livewire\Component;
 
 class Edit extends Component
 {
     public Category $category;
 
+    public array $subject = [];
+
+    public array $listsForFields = [];
+
     public function mount(Category $category)
     {
         $this->category = $category;
+        $this->subject  = $this->category->subject()->pluck('id')->toArray();
+        $this->initListsForFields();
     }
 
     public function render()
@@ -24,6 +31,7 @@ class Edit extends Component
         $this->validate();
 
         $this->category->save();
+        $this->category->subject()->sync($this->subject);
 
         return redirect()->route('admin.categories.index');
     }
@@ -35,6 +43,18 @@ class Edit extends Component
                 'string',
                 'required',
             ],
+            'subject' => [
+                'array',
+            ],
+            'subject.*.id' => [
+                'integer',
+                'exists:subjects,id',
+            ],
         ];
+    }
+
+    protected function initListsForFields(): void
+    {
+        $this->listsForFields['subject'] = Subject::pluck('title', 'id')->toArray();
     }
 }

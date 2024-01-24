@@ -35,7 +35,7 @@ class SubjectController extends Controller
     {
         abort_if(Gate::denies('subject_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $subject->load('category', 'task');
+        $subject->load('task');
 
         return view('admin.subject.show', compact('subject'));
     }

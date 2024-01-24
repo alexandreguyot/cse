@@ -17,19 +17,16 @@ class Category extends Model
 
     protected $fillable = [
         'title',
-        'description'
     ];
 
     public $orderable = [
         'id',
         'title',
-        'description'
     ];
 
     public $filterable = [
         'id',
         'title',
-        'description',
         'subject.title',
     ];
 

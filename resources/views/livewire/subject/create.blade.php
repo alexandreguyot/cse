@@ -20,16 +20,6 @@
             {{ trans('cruds.subject.fields.description_helper') }}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('subject.category_id') ? 'invalid' : '' }}">
-        <label class="form-label" for="category">{{ trans('cruds.subject.fields.category') }}</label>
-        <x-select-list class="form-control" id="category" name="category" :options="$this->listsForFields['category']" wire:model="subject.category_id" />
-        <div class="validation-message">
-            {{ $errors->first('subject.category_id') }}
-        </div>
-        <div class="help-block">
-            {{ trans('cruds.subject.fields.category_helper') }}
-        </div>
-    </div>
     <div class="form-group {{ $errors->has('task') ? 'invalid' : '' }}">
         <label class="form-label" for="task">{{ trans('cruds.subject.fields.task') }}</label>
         <x-select-list class="form-control" id="task" name="task" wire:model="task" :options="$this->listsForFields['task']" multiple />

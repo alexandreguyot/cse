@@ -5,7 +5,8 @@
         <div class="card-header border-b border-blueGray-200">
             <div class="card-header-container">
                 <h6 class="card-title">
-                    Liste des sujets
+                    {{ trans('cruds.subject.title_singular') }}
+                    {{ trans('global.list') }}
                 </h6>
 
                 @can('subject_create')

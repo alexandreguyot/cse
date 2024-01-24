@@ -25,6 +25,16 @@
                                 {{ $category->id }}
                             </td>
                         </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.category.fields.subject') }}
+                            </th>
+                            <td>
+                                @foreach($category->subject as $key => $entry)
+                                    <span class="badge badge-relationship">{{ $entry->title }}</span>
+                                @endforeach
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

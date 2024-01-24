@@ -59,7 +59,7 @@ class Index extends Component
     public function mount()
     {
         $this->sortBy            = 'id';
-        $this->sortDirection     = 'asc';
+        $this->sortDirection     = 'desc';
         $this->perPage           = 100;
         $this->paginationOptions = config('project.pagination.options');
         $this->orderable         = (new Category())->orderable;
@@ -67,7 +67,7 @@ class Index extends Component
 
     public function render()
     {
-        $query = Category::advancedFilter([
+        $query = Category::with(['subject'])->advancedFilter([
             's'               => $this->search ?: null,
             'order_column'    => $this->sortBy,
             'order_direction' => $this->sortDirection,

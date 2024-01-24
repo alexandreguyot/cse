@@ -18,9 +18,12 @@ class Subject extends Model
     protected $fillable = [
         'title',
         'description',
-        'status',
-        'priority',
-        'category_id',
+    ];
+
+    public $orderable = [
+        'id',
+        'title',
+        'description',
     ];
 
     protected $dates = [
@@ -29,33 +32,11 @@ class Subject extends Model
         'deleted_at',
     ];
 
-    public $orderable = [
-        'id',
-        'title',
-        'description',
-        'category.title',
-    ];
-
     public $filterable = [
         'id',
         'title',
         'description',
-        'category.title',
         'task.title',
-    ];
-
-    public const PRIORITY_SELECT = [
-        'low'    => 'Low',
-        'medium' => 'Medium',
-        'high'   => 'High',
-    ];
-
-    public const STATUS_SELECT = [
-        'not_started'           => 'Not Started',
-        'todo'                  => 'To Do',
-        'in_progress'           => 'In progress',
-        'done'                  => 'Done',
-        'archived'              => 'Archived',
     ];
 
     protected function serializeDate(DateTimeInterface $date)
@@ -63,26 +44,10 @@ class Subject extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
-
-    public function tasks()
+    public function task()
     {
         return $this->belongsToMany(Task::class);
     }
-
-    public function getStatusLabelAttribute($value)
-    {
-        return static::STATUS_SELECT[$this->status] ?? null;
-    }
-
-    public function getPriorityLabelAttribute($value)
-    {
-        return static::PRIORITY_SELECT[$this->priority] ?? null;
-    }
-
 
     public function getCreatedAtAttribute($value)
     {

@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Subject;
 
-use App\Models\Category;
 use App\Models\Subject;
 use App\Models\Task;
 use Livewire\Component;
@@ -47,11 +46,6 @@ class Create extends Component
                 'string',
                 'nullable',
             ],
-            'subject.category_id' => [
-                'integer',
-                'exists:categories,id',
-                'nullable',
-            ],
             'task' => [
                 'array',
             ],
@@ -64,7 +58,6 @@ class Create extends Component
 
     protected function initListsForFields(): void
     {
-        $this->listsForFields['category'] = Category::pluck('title', 'id')->toArray();
-        $this->listsForFields['task']     = Task::pluck('title', 'id')->toArray();
+        $this->listsForFields['task'] = Task::pluck('title', 'id')->toArray();
     }
 }
