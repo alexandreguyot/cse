@@ -17,13 +17,19 @@ class Category extends Model
 
     protected $fillable = [
         'title',
-        'description'
+        'description',
     ];
 
     public $orderable = [
         'id',
         'title',
-        'description'
+        'description',
+    ];
+
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
 
     public $filterable = [
@@ -31,12 +37,6 @@ class Category extends Model
         'title',
         'description',
         'subject.title',
-    ];
-
-    protected $dates = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
     ];
 
     protected function serializeDate(DateTimeInterface $date)

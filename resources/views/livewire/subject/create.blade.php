@@ -20,14 +20,34 @@
             {{ trans('cruds.subject.fields.description_helper') }}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('subject.category_id') ? 'invalid' : '' }}">
-        <label class="form-label" for="category">{{ trans('cruds.subject.fields.category') }}</label>
-        <x-select-list class="form-control" id="category" name="category" :options="$this->listsForFields['category']" wire:model="subject.category_id" />
+    <div class="form-group {{ $errors->has('subject.priority') ? 'invalid' : '' }}">
+        <label class="form-label">{{ trans('cruds.subject.fields.priority') }}</label>
+        <select class="form-control" wire:model="subject.priority">
+            <option value="null" disabled>{{ trans('global.pleaseSelect') }}...</option>
+            @foreach($this->listsForFields['priority'] as $key => $value)
+                <option value="{{ $key }}">{{ $value }}</option>
+            @endforeach
+        </select>
         <div class="validation-message">
-            {{ $errors->first('subject.category_id') }}
+            {{ $errors->first('subject.priority') }}
         </div>
         <div class="help-block">
-            {{ trans('cruds.subject.fields.category_helper') }}
+            {{ trans('cruds.subject.fields.priority_helper') }}
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('subject.status') ? 'invalid' : '' }}">
+        <label class="form-label">{{ trans('cruds.subject.fields.status') }}</label>
+        <select class="form-control" wire:model="subject.status">
+            <option value="null" disabled>{{ trans('global.pleaseSelect') }}...</option>
+            @foreach($this->listsForFields['status'] as $key => $value)
+                <option value="{{ $key }}">{{ $value }}</option>
+            @endforeach
+        </select>
+        <div class="validation-message">
+            {{ $errors->first('subject.status') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.subject.fields.status_helper') }}
         </div>
     </div>
     <div class="form-group {{ $errors->has('task') ? 'invalid' : '' }}">

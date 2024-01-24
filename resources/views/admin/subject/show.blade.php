@@ -43,12 +43,18 @@
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.subject.fields.category') }}
+                                {{ trans('cruds.subject.fields.priority') }}
                             </th>
                             <td>
-                                @if($subject->category)
-                                    <span class="badge badge-relationship">{{ $subject->category->title ?? '' }}</span>
-                                @endif
+                                {{ $subject->priority_label }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.subject.fields.status') }}
+                            </th>
+                            <td>
+                                {{ $subject->status_label }}
                             </td>
                         </tr>
                         <tr>

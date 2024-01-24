@@ -70,18 +70,18 @@
                 @endcan
                 @can('user_management_access')
                     <li class="items-center">
-                        <a class="has-sub {{ request()->is("admin/permissions*")||request()->is("admin/roles*")||request()->is("admin/users*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="#" onclick="window.openSubNav(this)">
+                        <a class="has-sub {{ request()->is("admin/users*")||request()->is("admin/roles*")||request()->is("admin/permissions*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="#" onclick="window.openSubNav(this)">
                             <i class="fa-fw fas c-sidebar-nav-icon fa-users">
                             </i>
                             {{ trans('cruds.userManagement.title') }}
                         </a>
                         <ul class="ml-4 subnav hidden">
-                            @can('permission_access')
+                            @can('user_access')
                                 <li class="items-center">
-                                    <a class="{{ request()->is("admin/permissions*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.permissions.index") }}">
-                                        <i class="fa-fw c-sidebar-nav-icon fas fa-unlock-alt">
+                                    <a class="{{ request()->is("admin/users*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.users.index") }}">
+                                        <i class="fa-fw c-sidebar-nav-icon fas fa-user">
                                         </i>
-                                        {{ trans('cruds.permission.title') }}
+                                        {{ trans('cruds.user.title') }}
                                     </a>
                                 </li>
                             @endcan
@@ -94,12 +94,12 @@
                                     </a>
                                 </li>
                             @endcan
-                            @can('user_access')
+                            @can('permission_access')
                                 <li class="items-center">
-                                    <a class="{{ request()->is("admin/users*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.users.index") }}">
-                                        <i class="fa-fw c-sidebar-nav-icon fas fa-user">
+                                    <a class="{{ request()->is("admin/permissions*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.permissions.index") }}">
+                                        <i class="fa-fw c-sidebar-nav-icon fas fa-unlock-alt">
                                         </i>
-                                        {{ trans('cruds.user.title') }}
+                                        {{ trans('cruds.permission.title') }}
                                     </a>
                                 </li>
                             @endcan

@@ -15,33 +15,25 @@ class Subject extends Model
 
     public $table = 'subjects';
 
-    protected $fillable = [
-        'title',
-        'description',
-        'status',
-        'priority',
-        'category_id',
-    ];
-
     protected $dates = [
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
+    protected $fillable = [
+        'title',
+        'description',
+        'priority',
+        'status',
+    ];
+
     public $orderable = [
         'id',
         'title',
         'description',
-        'category.title',
-    ];
-
-    public $filterable = [
-        'id',
-        'title',
-        'description',
-        'category.title',
-        'task.title',
+        'priority',
+        'status',
     ];
 
     public const PRIORITY_SELECT = [
@@ -50,12 +42,21 @@ class Subject extends Model
         'high'   => 'High',
     ];
 
+    public $filterable = [
+        'id',
+        'title',
+        'description',
+        'priority',
+        'status',
+        'task.title',
+    ];
+
     public const STATUS_SELECT = [
-        'not_started'           => 'Not Started',
-        'todo'                  => 'To Do',
-        'in_progress'           => 'In progress',
-        'done'                  => 'Done',
-        'archived'              => 'Archived',
+        'not_started' => 'Not Started',
+        'todo'        => 'To Do',
+        'in_progress' => 'In Progress',
+        'done'        => 'Done',
+        'archived'    => 'Archived',
     ];
 
     protected function serializeDate(DateTimeInterface $date)
@@ -63,14 +64,9 @@ class Subject extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
-    public function category()
+    public function getPriorityLabelAttribute($value)
     {
-        return $this->belongsTo(Category::class);
-    }
-
-    public function tasks()
-    {
-        return $this->belongsToMany(Task::class);
+        return static::PRIORITY_SELECT[$this->priority] ?? null;
     }
 
     public function getStatusLabelAttribute($value)
@@ -78,11 +74,10 @@ class Subject extends Model
         return static::STATUS_SELECT[$this->status] ?? null;
     }
 
-    public function getPriorityLabelAttribute($value)
+    public function task()
     {
-        return static::PRIORITY_SELECT[$this->priority] ?? null;
+        return $this->belongsToMany(Task::class);
     }
-
 
     public function getCreatedAtAttribute($value)
     {

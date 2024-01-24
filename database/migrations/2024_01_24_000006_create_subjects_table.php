@@ -12,8 +12,8 @@ class CreateSubjectsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->longText('description')->nullable();
-            $table->string('status');
             $table->string('priority')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

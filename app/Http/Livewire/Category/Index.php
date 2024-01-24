@@ -32,7 +32,7 @@ class Index extends Component
             'except' => 'id',
         ],
         'sortDirection' => [
-            'except' => 'desc',
+            'except' => 'asc',
         ],
     ];
 
@@ -67,7 +67,7 @@ class Index extends Component
 
     public function render()
     {
-        $query = Category::advancedFilter([
+        $query = Category::with(['subject'])->advancedFilter([
             's'               => $this->search ?: null,
             'order_column'    => $this->sortBy,
             'order_direction' => $this->sortDirection,

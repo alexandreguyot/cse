@@ -5,7 +5,10 @@
         <div class="card-header">
             <div class="card-header-container">
                 <h6 class="card-title">
-                    Edition de la tâche {{ $task->title }}
+                    {{ trans('global.edit') }}
+                    {{ trans('cruds.task.title_singular') }}:
+                    {{ trans('cruds.task.fields.id') }}
+                    {{ $task->id }}
                 </h6>
             </div>
         </div>

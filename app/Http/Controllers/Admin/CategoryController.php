@@ -35,6 +35,8 @@ class CategoryController extends Controller
     {
         abort_if(Gate::denies('category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $category->load('subject');
+
         return view('admin.category.show', compact('category'));
     }
 }
