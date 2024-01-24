@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Livewire\Permission;
+namespace App\Http\Livewire\Dashboard;
 
 use App\Http\Livewire\WithConfirmation;
 use App\Http\Livewire\WithSorting;
-use App\Models\Permission;
+use App\Models\Category;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
@@ -51,46 +51,26 @@ class Index extends Component
         $this->resetPage();
     }
 
-    public function resetSelected()
-    {
-        $this->selected = [];
-    }
-
     public function mount()
     {
         $this->sortBy            = 'id';
         $this->sortDirection     = 'asc';
         $this->perPage           = 100;
         $this->paginationOptions = config('project.pagination.options');
-        $this->orderable         = (new Permission())->orderable;
+        $this->orderable         = (new Category())->orderable;
     }
 
     public function render()
     {
-        $query = Permission::advancedFilter([
+        $query = Category::with('subjects', 'subjects.tasks')->advancedFilter([
             's'               => $this->search ?: null,
             'order_column'    => $this->sortBy,
             'order_direction' => $this->sortDirection,
         ]);
 
-        $permissions = $query->paginate($this->perPage);
+        $categories = $query->paginate($this->perPage);
+        dd($query);
 
-        return view('livewire.permission.index', compact('permissions', 'query'));
-    }
-
-    public function deleteSelected()
-    {
-        abort_if(Gate::denies('permission_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        Permission::whereIn('id', $this->selected)->delete();
-
-        $this->resetSelected();
-    }
-
-    public function delete(Permission $permission)
-    {
-        abort_if(Gate::denies('permission_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $permission->delete();
+        return view('livewire.dashboard.index', compact('categories', 'query'));
     }
 }

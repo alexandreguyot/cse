@@ -18,6 +18,8 @@ class Subject extends Model
     protected $fillable = [
         'title',
         'description',
+        'status',
+        'priority',
         'category_id',
     ];
 
@@ -42,6 +44,20 @@ class Subject extends Model
         'task.title',
     ];
 
+    public const PRIORITY_SELECT = [
+        'low'    => 'Low',
+        'medium' => 'Medium',
+        'high'   => 'High',
+    ];
+
+    public const STATUS_SELECT = [
+        'not_started'           => 'Not Started',
+        'todo'                  => 'To Do',
+        'in_progress'           => 'In progress',
+        'done'                  => 'Done',
+        'archived'              => 'Archived',
+    ];
+
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
@@ -52,10 +68,21 @@ class Subject extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function task()
+    public function tasks()
     {
         return $this->belongsToMany(Task::class);
     }
+
+    public function getStatusLabelAttribute($value)
+    {
+        return static::STATUS_SELECT[$this->status] ?? null;
+    }
+
+    public function getPriorityLabelAttribute($value)
+    {
+        return static::PRIORITY_SELECT[$this->priority] ?? null;
+    }
+
 
     public function getCreatedAtAttribute($value)
     {

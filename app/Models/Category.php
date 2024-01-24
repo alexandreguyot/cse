@@ -17,16 +17,20 @@ class Category extends Model
 
     protected $fillable = [
         'title',
+        'description'
     ];
 
     public $orderable = [
         'id',
         'title',
+        'description'
     ];
 
     public $filterable = [
         'id',
         'title',
+        'description',
+        'subject.title',
     ];
 
     protected $dates = [
@@ -38,6 +42,11 @@ class Category extends Model
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function subject()
+    {
+        return $this->belongsToMany(Subject::class);
     }
 
     public function getCreatedAtAttribute($value)

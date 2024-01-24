@@ -5,13 +5,12 @@
         <div class="card-header border-b border-blueGray-200">
             <div class="card-header-container">
                 <h6 class="card-title">
-                    {{ trans('cruds.task.title_singular') }}
-                    {{ trans('global.list') }}
+                    Liste des tâches
                 </h6>
 
                 @can('task_create')
                     <a class="btn btn-indigo" href="{{ route('admin.tasks.create') }}">
-                        {{ trans('global.add') }} {{ trans('cruds.task.title_singular') }}
+                        {{ trans('global.add') }} tâche
                     </a>
                 @endcan
             </div>
