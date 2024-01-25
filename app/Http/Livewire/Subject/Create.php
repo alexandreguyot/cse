@@ -66,12 +66,8 @@ class Create extends Component
 
     protected function initListsForFields(): void
     {
-<<<<<<< HEAD
-        $this->listsForFields['task'] = Task::pluck('title', 'id')->toArray();
-=======
         $this->listsForFields['priority'] = $this->subject::PRIORITY_SELECT;
         $this->listsForFields['status']   = $this->subject::STATUS_SELECT;
         $this->listsForFields['task']     = Task::pluck('title', 'id')->toArray();
->>>>>>> 47caad7 (QuickAdminPanel automatic commit)
     }
 }

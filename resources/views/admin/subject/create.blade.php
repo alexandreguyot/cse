@@ -5,8 +5,7 @@
         <div class="card-header">
             <div class="card-header-container">
                 <h6 class="card-title">
-                    {{ trans('global.create') }}
-                    {{ trans('cruds.subject.title_singular') }}
+                    Créer un sujet
                 </h6>
             </div>
         </div>

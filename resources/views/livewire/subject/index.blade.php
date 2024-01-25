@@ -79,15 +79,12 @@
                                 {{ $subject->description }}
                             </td>
                             <td>
-<<<<<<< HEAD
-=======
                                 {{ $subject->priority_label }}
                             </td>
                             <td>
                                 {{ $subject->status_label }}
                             </td>
                             <td>
->>>>>>> 47caad7 (QuickAdminPanel automatic commit)
                                 @foreach($subject->task as $key => $entry)
                                     <span class="badge badge-relationship">{{ $entry->title }}</span>
                                 @endforeach
