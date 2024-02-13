@@ -33,6 +33,14 @@
                                 {{ $task->title }}
                             </td>
                         </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.task.fields.date') }}
+                            </th>
+                            <td>
+                                {{ $task->date }}
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

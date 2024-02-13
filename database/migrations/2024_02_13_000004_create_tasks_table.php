@@ -12,6 +12,7 @@ class CreateTasksTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->longText('description');
+            $table->date('date')->nullable();
             $table->string('status');
             $table->string('priority')->nullable();
             $table->timestamps();

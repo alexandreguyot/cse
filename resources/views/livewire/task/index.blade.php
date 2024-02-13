@@ -1,14 +1,36 @@
 <div>
     <div class="card-controls sm:flex">
-        <div class="w-full sm:w-1/2 ">
-            Recherche:
-            <input type="text" wire:model.debounce.300ms="search" class="w-full sm:w-1/3 inline-block form-control" />
+        <div class="w-full sm:w-1/2">
+            Per page:
+            <select wire:model="perPage" class="form-select w-full sm:w-1/6">
+                @foreach($paginationOptions as $value)
+                    <option value="{{ $value }}">{{ $value }}</option>
+                @endforeach
+            </select>
+
+            @can('task_delete')
+                <button class="btn btn-rose ml-3 disabled:opacity-50 disabled:cursor-not-allowed" type="button" wire:click="confirm('deleteSelected')" wire:loading.attr="disabled" {{ $this->selectedCount ? '' : 'disabled' }}>
+                    {{ __('Delete Selected') }}
+                </button>
+            @endcan
+
+            @if(file_exists(app_path('Http/Livewire/ExcelExport.php')))
+                <livewire:excel-export model="Task" format="csv" />
+                <livewire:excel-export model="Task" format="xlsx" />
+                <livewire:excel-export model="Task" format="pdf" />
+            @endif
+
+
+
+
         </div>
         <div class="w-full sm:w-1/2 sm:text-right">
+            Search:
+            <input type="text" wire:model.debounce.300ms="search" class="w-full sm:w-1/3 inline-block" />
         </div>
     </div>
     <div wire:loading.delay>
-        Chargement...
+        Loading...
     </div>
 
     <div class="overflow-hidden">
@@ -16,6 +38,12 @@
             <table class="table table-index w-full">
                 <thead>
                     <tr>
+                        <th class="w-9">
+                        </th>
+                        <th class="w-28">
+                            {{ trans('cruds.task.fields.id') }}
+                            @include('components.table.sort', ['field' => 'id'])
+                        </th>
                         <th>
                             {{ trans('cruds.task.fields.title') }}
                             @include('components.table.sort', ['field' => 'title'])
@@ -23,6 +51,10 @@
                         <th>
                             {{ trans('cruds.task.fields.description') }}
                             @include('components.table.sort', ['field' => 'description'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.task.fields.date') }}
+                            @include('components.table.sort', ['field' => 'date'])
                         </th>
                         <th>
                             {{ trans('cruds.task.fields.status') }}
@@ -43,10 +75,19 @@
                     @forelse($tasks as $task)
                         <tr>
                             <td>
+                                <input type="checkbox" value="{{ $task->id }}" wire:model="selected">
+                            </td>
+                            <td>
+                                {{ $task->id }}
+                            </td>
+                            <td>
                                 {{ $task->title }}
                             </td>
                             <td>
                                 {{ $task->description }}
+                            </td>
+                            <td>
+                                {{ $task->date }}
                             </td>
                             <td>
                                 {{ $task->status_label }}

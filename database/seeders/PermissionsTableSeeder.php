@@ -138,6 +138,10 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => 32,
                 'title' => 'subject_access',
             ],
+            [
+                'id'    => 33,
+                'title' => 'system_calendar_access',
+            ],
         ];
 
         Permission::insert($permissions);

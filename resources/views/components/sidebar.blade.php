@@ -106,6 +106,15 @@
                         </ul>
                     </li>
                 @endcan
+                @can('system_calendar_access')
+                    <li class="items-center">
+                        <a class="{{ request()->is("admin/system-calendars*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.system-calendars.index") }}">
+                            <i class="fa-fw c-sidebar-nav-icon far fa-calendar">
+                            </i>
+                            {{ trans('cruds.systemCalendar.title') }}
+                        </a>
+                    </li>
+                @endcan
 
                 @if(file_exists(app_path('Http/Controllers/Auth/UserProfileController.php')))
                     @can('auth_profile_edit')
