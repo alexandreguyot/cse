@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SubjectController;
@@ -39,6 +40,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
 
     // System Calendar
     Route::resource('system-calendars', SystemCalendarController::class, ['except' => ['store', 'update', 'destroy', 'create', 'edit', 'show']]);
+
+    // Messages
+    Route::get('messages', [MessageController::class, 'index'])->name('messages.index');
+    Route::post('messages', [MessageController::class, 'store'])->name('messages.store');
+    Route::get('messages/inbox', [MessageController::class, 'inbox'])->name('messages.inbox');
+    Route::get('messages/outbox', [MessageController::class, 'outbox'])->name('messages.outbox');
+    Route::get('messages/create', [MessageController::class, 'create'])->name('messages.create');
+    Route::get('messages/{conversation}', [MessageController::class, 'show'])->name('messages.show');
+    Route::post('messages/{conversation}', [MessageController::class, 'update'])->name('messages.update');
+    Route::post('messages/{conversation}/destroy', [MessageController::class, 'destroy'])->name('messages.destroy');
 });
 
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth']], function () {
