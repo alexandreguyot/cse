@@ -16,6 +16,7 @@ class Task extends Model
     public $table = 'tasks';
 
     protected $dates = [
+        'date',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -24,14 +25,7 @@ class Task extends Model
     protected $fillable = [
         'title',
         'description',
-        'status',
-        'priority',
-    ];
-
-    public $orderable = [
-        'id',
-        'title',
-        'description',
+        'date',
         'status',
         'priority',
     ];
@@ -42,13 +36,13 @@ class Task extends Model
         'high'   => 'High',
     ];
 
-    public $filterable = [
+    public $orderable = [
         'id',
         'title',
         'description',
+        'date',
         'status',
         'priority',
-        'user.name',
     ];
 
     public const STATUS_SELECT = [
@@ -57,9 +51,29 @@ class Task extends Model
         'done'        => 'Done',
     ];
 
+    public $filterable = [
+        'id',
+        'title',
+        'description',
+        'date',
+        'status',
+        'priority',
+        'user.name',
+    ];
+
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function getDateAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('project.date_format')) : null;
+    }
+
+    public function setDateAttribute($value)
+    {
+        $this->attributes['date'] = $value ? Carbon::createFromFormat(config('project.date_format'), $value)->format('Y-m-d') : null;
     }
 
     public function getStatusLabelAttribute($value)

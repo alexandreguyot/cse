@@ -35,6 +35,7 @@ class Category extends Model
     public $filterable = [
         'id',
         'title',
+        'description',
         'subject.title',
     ];
 

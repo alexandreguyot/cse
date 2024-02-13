@@ -69,7 +69,7 @@ return [
     ],
     'task' => [
         'title'          => 'Tâches',
-        'title_singular' => 'Tâche',
+        'title_singular' => 'Tâch',
         'fields'         => [
             'id'                 => 'ID',
             'id_helper'          => ' ',
@@ -89,6 +89,8 @@ return [
             'user_helper'        => ' ',
             'priority'           => 'Priorité',
             'priority_helper'    => ' ',
+            'date'               => 'Date',
+            'date_helper'        => ' ',
         ],
     ],
     'category' => [
@@ -134,6 +136,10 @@ return [
             'status'             => 'Status',
             'status_helper'      => ' ',
         ],
+    ],
+    'systemCalendar' => [
+        'title'          => 'Calendar',
+        'title_singular' => 'Calendar',
     ],
 
 ];

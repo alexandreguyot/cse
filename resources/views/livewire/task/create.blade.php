@@ -20,6 +20,16 @@
             {{ trans('cruds.task.fields.description_helper') }}
         </div>
     </div>
+    <div class="form-group {{ $errors->has('task.date') ? 'invalid' : '' }}">
+        <label class="form-label" for="date">{{ trans('cruds.task.fields.date') }}</label>
+        <x-date-picker class="form-control" wire:model="task.date" id="date" name="date" picker="date" />
+        <div class="validation-message">
+            {{ $errors->first('task.date') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.task.fields.date_helper') }}
+        </div>
+    </div>
     <div class="form-group {{ $errors->has('task.status') ? 'invalid' : '' }}">
         <label class="form-label required">{{ trans('cruds.task.fields.status') }}</label>
         <select class="form-control" wire:model="task.status">

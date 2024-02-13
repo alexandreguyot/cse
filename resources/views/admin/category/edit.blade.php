@@ -5,7 +5,10 @@
         <div class="card-header">
             <div class="card-header-container">
                 <h6 class="card-title">
-                    Edition de la catégorie {{ $category->title }}
+                    {{ trans('global.edit') }}
+                    {{ trans('cruds.category.title_singular') }}:
+                    {{ trans('cruds.category.fields.id') }}
+                    {{ $category->id }}
                 </h6>
             </div>
         </div>

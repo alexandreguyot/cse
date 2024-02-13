@@ -47,6 +47,10 @@ class Create extends Component
                 'string',
                 'required',
             ],
+            'task.date' => [
+                'nullable',
+                'date_format:' . config('project.date_format'),
+            ],
             'task.status' => [
                 'required',
                 'in:' . implode(',', array_keys($this->listsForFields['status'])),
