@@ -69,7 +69,7 @@ return [
     ],
     'task' => [
         'title'          => 'Tâches',
-        'title_singular' => 'Tâch',
+        'title_singular' => 'Tâche',
         'fields'         => [
             'id'                 => 'ID',
             'id_helper'          => ' ',
