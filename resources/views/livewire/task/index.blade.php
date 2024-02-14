@@ -16,12 +16,6 @@
             <table class="table table-index w-full">
                 <thead>
                     <tr>
-                        <th class="w-9">
-                        </th>
-                        <th class="w-28">
-                            {{ trans('cruds.task.fields.id') }}
-                            @include('components.table.sort', ['field' => 'id'])
-                        </th>
                         <th>
                             {{ trans('cruds.task.fields.title') }}
                             @include('components.table.sort', ['field' => 'title'])
@@ -52,12 +46,6 @@
                 <tbody>
                     @forelse($tasks as $task)
                         <tr>
-                            <td>
-                                <input type="checkbox" value="{{ $task->id }}" wire:model="selected">
-                            </td>
-                            <td>
-                                {{ $task->id }}
-                            </td>
                             <td>
                                 {{ $task->title }}
                             </td>
