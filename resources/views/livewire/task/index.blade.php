@@ -29,12 +29,12 @@
                             @include('components.table.sort', ['field' => 'date'])
                         </th>
                         <th>
-                            {{ trans('cruds.task.fields.status') }}
-                            @include('components.table.sort', ['field' => 'status'])
-                        </th>
-                        <th>
                             {{ trans('cruds.task.fields.priority') }}
                             @include('components.table.sort', ['field' => 'priority'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.task.fields.status') }}
+                            @include('components.table.sort', ['field' => 'status'])
                         </th>
                         <th>
                             {{ trans('cruds.task.fields.user') }}
@@ -56,10 +56,10 @@
                                 {{ $task->date }}
                             </td>
                             <td>
-                                {{ $task->status_label }}
+                                <span class="badge {{ $task->getBadgesByPriority() }}">{{ $task->priority_label }}</span>
                             </td>
                             <td>
-                                {{ $task->priority_label }}
+                                <span class="badge {{ $task->getBadgesByStatus() }}">{{ $task->status_label }}</span>
                             </td>
                             <td>
                                 @foreach($task->user as $key => $entry)

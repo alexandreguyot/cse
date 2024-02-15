@@ -16,22 +16,22 @@ class CategorySeeder extends Seeder
         $categories = [
             [
                 'id'             => 1,
-                'title'           => 'Activités CE',
+                'title'           => 'Activités sociales et culturelles',
                 'description'         => '',
             ],
             [
                 'id'             => 2,
-                'title'           => 'CHSCT',
+                'title'           => 'Santé, Sécurité et Conditions de travail',
                 'description'         => '',
             ],
             [
                 'id'             => 3,
-                'title'           => 'Compte et trésorerie',
+                'title'           => 'Trésorerie du CSE',
                 'description'         => '',
             ],
             [
                 'id'             => 4,
-                'title'           => 'DP',
+                'title'           => 'Réclamations',
                 'description'         => '',
             ]
             ,

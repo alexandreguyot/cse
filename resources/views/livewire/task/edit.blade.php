@@ -60,6 +60,16 @@
             {{ trans('cruds.task.fields.priority_helper') }}
         </div>
     </div>
+    <div class="form-group {{ $errors->has('subject') ? 'invalid' : '' }}">
+        <label class="form-label required" for="subject">{{ trans('cruds.task.fields.subject') }}</label>
+        <x-select-list class="form-control" required id="subject" name="subject" wire:model="subject" :options="$this->listsForFields['subjects']" />
+        <div class="validation-message">
+            {{ $errors->first('subject') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.task.fields.subject_helper') }}
+        </div>
+    </div>
     <div class="form-group {{ $errors->has('user') ? 'invalid' : '' }}">
         <label class="form-label required" for="user">{{ trans('cruds.task.fields.user') }}</label>
         <x-select-list class="form-control" required id="user" name="user" wire:model="user" :options="$this->listsForFields['user']" multiple />

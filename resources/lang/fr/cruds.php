@@ -91,11 +91,13 @@ return [
             'priority_helper'    => ' ',
             'date'               => 'Date',
             'date_helper'        => ' ',
+            'subject'            => 'Sujet',
+            'subject_helper'     => ' ',
         ],
     ],
     'category' => [
         'title'          => 'Categories',
-        'title_singular' => 'Category',
+        'title_singular' => 'Categorie',
         'fields'         => [
             'id'                 => 'ID',
             'id_helper'          => ' ',
@@ -129,17 +131,19 @@ return [
             'updated_at_helper'  => ' ',
             'deleted_at'         => 'Deleted at',
             'deleted_at_helper'  => ' ',
-            'task'               => 'Tâche',
+            'task'               => 'Tâche(s)',
             'task_helper'        => ' ',
             'priority'           => 'Priorité',
             'priority_helper'    => ' ',
             'status'             => 'Status',
             'status_helper'      => ' ',
+            'category'           => 'Catégorie',
+            'category_helper'    => ' ',
         ],
     ],
     'systemCalendar' => [
-        'title'          => 'Calendar',
-        'title_singular' => 'Calendar',
+        'title'          => 'Calendrier',
+        'title_singular' => 'Calendier',
     ],
 
 ];

@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Task;
 
 use App\Models\Task;
 use App\Models\User;
+use App\Models\Subject;
 use Livewire\Component;
 
 class Create extends Component
@@ -11,6 +12,8 @@ class Create extends Component
     public Task $task;
 
     public array $user = [];
+
+    public $subject;
 
     public array $listsForFields = [];
 
@@ -32,6 +35,7 @@ class Create extends Component
 
         $this->task->save();
         $this->task->user()->sync($this->user);
+        $this->task->subject()->sync($this->subject);
 
         return redirect()->route('admin.tasks.index');
     }
@@ -67,6 +71,10 @@ class Create extends Component
                 'integer',
                 'exists:users,id',
             ],
+            'subject.id' => [
+                'integer',
+                'exists:subject,id',
+            ],
         ];
     }
 
@@ -75,5 +83,6 @@ class Create extends Component
         $this->listsForFields['status']   = $this->task::STATUS_SELECT;
         $this->listsForFields['priority'] = $this->task::PRIORITY_SELECT;
         $this->listsForFields['user']     = User::pluck('name', 'id')->toArray();
+        $this->listsForFields['subjects'] = Subject::pluck('title', 'id')->toArray();
     }
 }

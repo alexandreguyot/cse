@@ -31,9 +31,9 @@ class Task extends Model
     ];
 
     public const PRIORITY_SELECT = [
-        'low'    => 'Low',
-        'medium' => 'Medium',
-        'high'   => 'High',
+        '1'    => 'Low',
+        '2' => 'Medium',
+        '3'   => 'High',
     ];
 
     public $orderable = [
@@ -46,9 +46,9 @@ class Task extends Model
     ];
 
     public const STATUS_SELECT = [
-        'todo'        => 'To Do',
-        'in_progress' => 'In progress',
-        'done'        => 'Done',
+        '1'         => 'To Do',
+        '2'         => 'In progress',
+        '3'         => 'Done',
     ];
 
     public $filterable = [
@@ -89,6 +89,29 @@ class Task extends Model
     public function user()
     {
         return $this->belongsToMany(User::class);
+    }
+
+    public function subject()
+    {
+        return $this->belongsToMany(Subject::class);
+    }
+
+    public function getBadgesByPriority() {
+        if ($this->priority == '1') {
+            return 'badge-green';
+        } else if ($this->priority == '2') {
+            return 'badge-blue';
+        }
+        return 'badge-red';
+    }
+
+    public function getBadgesByStatus() {
+        if ($this->status == 1) {
+            return 'badge-gray';
+        } else if ($this->status == 3) {
+            return 'badge-blue';
+        }
+        return 'badge-green';
     }
 
     public function getCreatedAtAttribute($value)

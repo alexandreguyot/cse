@@ -207,6 +207,22 @@ textarea.form-control {
     @apply text-indigo-600 bg-indigo-200
 }
 
+.badge-green {
+    @apply text-green-600 bg-green-200
+}
+
+.badge-gray {
+    @apply text-gray-600 bg-gray-200
+}
+
+.badge-red {
+    @apply text-red-600 bg-red-200
+}
+
+.badge-blue {
+    @apply text-blue-600 bg-blue-200
+}
+
 .link-light-blue {
     @apply text-lightBlue-500 flex items-center hover:underline last:mb-0 mb-1;
 }

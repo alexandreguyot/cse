@@ -49,10 +49,10 @@
                                 {{ $subject->description }}
                             </td>
                             <td>
-                                {{ $subject->priority_label }}
+                                <span class="badge {{ $subject->getBadgesByPriority() }}">{{ $subject->priority_label }}</span>
                             </td>
                             <td>
-                                {{ $subject->status_label }}
+                                <span class="badge {{ $subject->getBadgesByStatus() }}">{{ $subject->status_label }}</span>
                             </td>
                             <td>
                                 @foreach($subject->task as $key => $entry)

@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Task;
 
 use App\Models\Task;
 use App\Models\User;
+use App\Models\Subject;
 use Livewire\Component;
 
 class Edit extends Component
@@ -18,6 +19,7 @@ class Edit extends Component
     {
         $this->task = $task;
         $this->user = $this->task->user()->pluck('id')->toArray();
+        $this->subject = $this->task->subject()->pluck('id')->toArray();
         $this->initListsForFields();
     }
 
@@ -32,6 +34,7 @@ class Edit extends Component
 
         $this->task->save();
         $this->task->user()->sync($this->user);
+        $this->task->subject()->sync($this->subject);
 
         return redirect()->route('admin.tasks.index');
     }
@@ -67,6 +70,10 @@ class Edit extends Component
                 'integer',
                 'exists:users,id',
             ],
+            'subject.id' => [
+                'integer',
+                'exists:subject,id',
+            ],
         ];
     }
 
@@ -75,5 +82,6 @@ class Edit extends Component
         $this->listsForFields['status']   = $this->task::STATUS_SELECT;
         $this->listsForFields['priority'] = $this->task::PRIORITY_SELECT;
         $this->listsForFields['user']     = User::pluck('name', 'id')->toArray();
+        $this->listsForFields['subjects'] = Subject::pluck('title', 'id')->toArray();
     }
 }

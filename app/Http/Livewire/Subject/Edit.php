@@ -4,11 +4,14 @@ namespace App\Http\Livewire\Subject;
 
 use App\Models\Subject;
 use App\Models\Task;
+use App\Models\Category;
 use Livewire\Component;
 
 class Edit extends Component
 {
     public Subject $subject;
+
+    public $category;
 
     public array $task = [];
 
@@ -18,6 +21,7 @@ class Edit extends Component
     {
         $this->subject = $subject;
         $this->task    = $this->subject->task()->pluck('id')->toArray();
+        $this->category = $this->subject->category()->pluck('id')->toArray();
         $this->initListsForFields();
     }
 
@@ -62,6 +66,10 @@ class Edit extends Component
                 'integer',
                 'exists:tasks,id',
             ],
+            'category.id' => [
+                'integer',
+                'exists:subject,id',
+            ],
         ];
     }
 
@@ -70,5 +78,6 @@ class Edit extends Component
         $this->listsForFields['priority'] = $this->subject::PRIORITY_SELECT;
         $this->listsForFields['status']   = $this->subject::STATUS_SELECT;
         $this->listsForFields['task']     = Task::pluck('title', 'id')->toArray();
+        $this->listsForFields['categories'] = Category::pluck('title', 'id')->toArray();
     }
 }
