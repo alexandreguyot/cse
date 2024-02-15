@@ -111,6 +111,8 @@ return [
             'deleted_at_helper'  => ' ',
             'subject'            => 'Sujet(s)',
             'subject_helper'     => ' ',
+            'task'            => 'Tâche(s)',
+            'task_helper'     => ' ',
             'description'        => 'Description',
             'description_helper' => ' ',
         ],

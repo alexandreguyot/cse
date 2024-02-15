@@ -32,7 +32,7 @@ class Index extends Component
             'except' => 'id',
         ],
         'sortDirection' => [
-            'except' => 'desc',
+            'except' => 'asc',
         ],
     ];
 
@@ -51,6 +51,11 @@ class Index extends Component
         $this->resetPage();
     }
 
+    public function resetSelected()
+    {
+        $this->selected = [];
+    }
+
     public function mount()
     {
         $this->sortBy            = 'id';
@@ -62,14 +67,13 @@ class Index extends Component
 
     public function render()
     {
-        $query = Category::with('subjects', 'subjects.tasks')->advancedFilter([
+        $query = Category::with(['subject'])->advancedFilter([
             's'               => $this->search ?: null,
             'order_column'    => $this->sortBy,
             'order_direction' => $this->sortDirection,
         ]);
 
         $categories = $query->paginate($this->perPage);
-        dd($query);
 
         return view('livewire.dashboard.index', compact('categories', 'query'));
     }

@@ -2154,6 +2154,9 @@ select {
 .gap-4 {
 	gap: 1rem;
 }
+.gap-3 {
+	gap: 0.75rem;
+}
 .divide-y > :not([hidden]) ~ :not([hidden]) {
 	--tw-divide-y-reverse: 0;
 	border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -2308,10 +2311,6 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(254, 242, 242, var(--tw-bg-opacity));
 }
-.bg-blueGray-100 {
-	--tw-bg-opacity: 1;
-	background-color: rgba(241, 245, 249, var(--tw-bg-opacity));
-}
 .bg-blueGray-800 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(30, 41, 59, var(--tw-bg-opacity));
@@ -2319,6 +2318,10 @@ select {
 .bg-green-500 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(16, 185, 129, var(--tw-bg-opacity));
+}
+.bg-blueGray-100 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(241, 245, 249, var(--tw-bg-opacity));
 }
 .bg-indigo-100 {
 	--tw-bg-opacity: 1;
@@ -2419,17 +2422,26 @@ select {
 .pl-4 {
 	padding-left: 1rem;
 }
-.pt-3 {
-	padding-top: 0.75rem;
-}
 .pt-0 {
 	padding-top: 0px;
+}
+.pt-3 {
+	padding-top: 0.75rem;
 }
 .pt-6 {
 	padding-top: 1.5rem;
 }
 .pb-3 {
 	padding-bottom: 0.75rem;
+}
+.pl-16 {
+	padding-left: 4rem;
+}
+.\!pl-16 {
+	padding-left: 4rem !important;
+}
+.pl-32 {
+	padding-left: 8rem;
 }
 .text-left {
 	text-align: left;

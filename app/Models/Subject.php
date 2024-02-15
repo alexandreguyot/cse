@@ -81,7 +81,7 @@ class Subject extends Model
 
     public function category()
     {
-        return $this->belongsToMany(Task::class);
+        return $this->belongsToMany(Category::class);
     }
 
     public function getBadgesByPriority() {
