@@ -150,6 +150,18 @@ textarea.form-control {
     @apply align-middle border border-solid text-xs uppercase whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500
 }
 
+.table .title-category {
+    @apply align-middle border border-solid text-xl uppercase whitespace-nowrap font-semibold text-left bg-blueGray-100 text-blueGray-500
+}
+
+.table .title-subject {
+    @apply align-middle border border-solid text-xs uppercase whitespace-nowrap font-semibold text-left bg-lightBlue-100 text-lightBlue-500
+}
+
+.table .title-task {
+    @apply align-middle border border-solid text-xs uppercase whitespace-nowrap font-semibold text-left bg-green-100 text-green-500
+}
+
 .table td {
     @apply border-blueGray-200
 }

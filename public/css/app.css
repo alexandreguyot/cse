@@ -428,6 +428,51 @@ input[type=text].form-control:focus, input[type=email].form-control:focus, input
     --tw-text-opacity: 1;
     color: rgba(100, 116, 139, var(--tw-text-opacity))}
 
+.table .title-category {
+    white-space: nowrap;
+    border-width: 1px;
+    border-style: solid;
+    --tw-bg-opacity: 1;
+    background-color: rgba(241, 245, 249, var(--tw-bg-opacity));
+    text-align: left;
+    vertical-align: middle;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    --tw-text-opacity: 1;
+    color: rgba(100, 116, 139, var(--tw-text-opacity))}
+
+.table .title-subject {
+    white-space: nowrap;
+    border-width: 1px;
+    border-style: solid;
+    --tw-bg-opacity: 1;
+    background-color: rgba(224, 242, 254, var(--tw-bg-opacity));
+    text-align: left;
+    vertical-align: middle;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    --tw-text-opacity: 1;
+    color: rgba(14, 165, 233, var(--tw-text-opacity))}
+
+.table .title-task {
+    white-space: nowrap;
+    border-width: 1px;
+    border-style: solid;
+    --tw-bg-opacity: 1;
+    background-color: rgba(209, 250, 229, var(--tw-bg-opacity));
+    text-align: left;
+    vertical-align: middle;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    --tw-text-opacity: 1;
+    color: rgba(16, 185, 129, var(--tw-text-opacity))}
+
 .table td {
     --tw-border-opacity: 1;
     border-color: rgba(226, 232, 240, var(--tw-border-opacity))}
@@ -2077,6 +2122,18 @@ select {
 .w-1 {
 	width: 0.25rem;
 }
+.w-4 {
+	width: 1rem;
+}
+.w-9 {
+	width: 2.25rem;
+}
+.w-36 {
+	width: 9rem;
+}
+.w-5\/12 {
+	width: 41.666667%;
+}
 .min-w-48 {
 	min-width: 12rem;
 }
@@ -2433,15 +2490,6 @@ select {
 }
 .pb-3 {
 	padding-bottom: 0.75rem;
-}
-.pl-16 {
-	padding-left: 4rem;
-}
-.\!pl-16 {
-	padding-left: 4rem !important;
-}
-.pl-32 {
-	padding-left: 8rem;
 }
 .text-left {
 	text-align: left;
