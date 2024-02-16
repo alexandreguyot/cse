@@ -46,6 +46,7 @@
     </form>
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+    <script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
     @livewireScripts
         @yield('scripts')
         @stack('scripts')

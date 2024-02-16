@@ -2125,14 +2125,11 @@ select {
 .w-4 {
 	width: 1rem;
 }
-.w-9 {
-	width: 2.25rem;
-}
-.w-36 {
-	width: 9rem;
-}
 .w-5\/12 {
 	width: 41.666667%;
+}
+.w-9 {
+	width: 2.25rem;
 }
 .min-w-48 {
 	min-width: 12rem;
@@ -2543,6 +2540,9 @@ select {
 }
 .uppercase {
 	text-transform: uppercase;
+}
+.italic {
+	font-style: italic;
 }
 .leading-none {
 	line-height: 1;

@@ -40,3 +40,22 @@
         </a>
     </div>
 </form>
+
+@push('scripts')
+    <script>
+        tinymce.init({
+            language : "fr_FR",
+            selector: 'textarea#description',
+            plugins: 'code table lists',
+            toolbar: 'undo redo | formatselect| bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table',
+            setup: function (editor) {
+                editor.on('init change', function () {
+                    editor.save();
+                });
+                editor.on('change', function (e) {
+                    @this.set('category.description', editor.getContent());
+                });
+            }
+        });
+    </script>
+@endpush

@@ -11,6 +11,8 @@ try {
     require('select2')
     window.Dropzone = require('dropzone').default
     require('flatpickr')
+    const french = require("flatpickr/dist/l10n/fr.js").default.fr;
+    flatpickr.localize(french);
 } catch (e) {}
 
 /**
